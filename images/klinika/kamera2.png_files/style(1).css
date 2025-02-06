@@ -1,0 +1,312 @@
+/*
+Theme Name: Sweetness Child Theme
+Description: A child theme based on Sweetness v2 by BNE Creative.
+Author: Kerry Kline
+Author URI: http://www.bnecreative.com
+Version: 2.0
+Template: sweetness
+*/
+
+/*
+ * 	IMPORTANT! There is no need to @import the parent's
+ *	main style.css file. It's already enqueued!!
+*/
+
+
+
+/* ===========================================================
+ *	General
+ * ======================================================== */
+
+/* 
+ *	Available CSS Variables
+ *	There are a number of pre-defined variables available
+ *	from the theme. CSS Variables can be envoked by using.
+ *
+ *	Example: 
+ *	.class{ 
+ *		color: var(--theme-primary-color); 
+ *	}
+ *
+ *	Theme content size:
+ *		 --theme-content-width
+ *	Theme Palette Colors
+ *		--theme-primary-color
+ *		--theme-secondary-color
+ *		--theme-tertiary-color
+ *		--theme-dark-color
+ *		--theme-light-color
+ *		--theme-success-color
+ *		--theme-danger-color
+ *		--theme-warning-color
+ *		--theme-info-color
+ *
+ *	In addiiton, there are numerous Boostrap variables that can be found
+ *	by using the browser inspector and finding the :root {}
+ *
+*/
+
+
+
+/* == Typography == */
+.font-baskerville {
+	font-family: "Libre Baskerville","Baskerville",Arial,sans-serif;
+}
+strong { font-weight: 700; }
+@media (max-width: 600px) {
+	.heading-main > * {
+		font-size: 10vw !important;
+	}
+}
+
+section + h2,
+p + h2,
+ul + h2,
+p + .bne-container.alignfull {
+	margin-top: 2rem;
+}
+.text-center > ul {
+	list-style: none;
+}
+
+
+/* == Media == */
+
+
+
+
+/* == Animations == */
+.animated.delay-1-5s {
+	-webkit-animation-delay: 1.5s;
+	animation-delay: 1.5s;
+}
+
+/* == Utility == */
+@media (max-width: 600px) {
+	.bg-hide-mobile,
+	.bg-hide-mobile .bne-container-image {
+		background-image: none !important;
+	}
+}
+.heightAuto {
+	height: auto !important;
+}
+
+
+/* ===========================================================
+ *	Menu
+ * ======================================================== */
+
+/* == Mobile Nav btn ==*/
+/*
+@media (max-width: 767px) {
+	.btn-navbar.open-nav {
+		position: relative;
+		top: 0;
+		left: 0;
+		right: 0;
+		color: white;
+		background-color: var(--theme-primary-color);
+	}
+}
+*/
+
+/* == Menu == */
+.menu-wrapper {}
+#access {}
+#primary-menu ul {
+	width: 250px;
+}
+#primary-menu ul ul {
+	left: 250px;
+}
+
+.menu-sticky-only.contact a {
+	background: var(--theme-secondary-color) !important;
+	color: white !important;
+}
+#access .menu-sticky-only {
+	display: none !important;
+}
+
+/* ===========================================================
+ *	Header
+ * ======================================================== */
+
+#header-wrapper {
+	padding-bottom: 0;
+}
+
+#header-wrapper .address {
+	font-size: 1rem;
+}
+#header-wrapper .wp-block-button__link {
+	text-transform: uppercase;
+	font-size: 15px;
+}
+
+#header-wrapper .wp-block-button__link + .wp-block-button__link {
+	margin-left: 10px;
+}
+.header-widget-area .font-baskerville {
+	font-size: 1.8rem;
+	font-style: italic;
+	margin-top: 10px;
+}
+
+@media ( max-width: 768px ) {
+	#header-wrapper .wp-block-button__link {
+		width: 100%;
+		display: block;
+		margin: 0 0 1rem 0 !important;
+	}
+	#header-wrapper .address {
+		font-size: 1.3rem;
+	}
+	.header-logo {
+		margin-bottom: 20px;
+	}
+	.header-logo img {
+		max-height: 100%;
+	}
+}
+
+/* ===========================================================
+ *	Main
+ * ======================================================== */
+
+.breadcrumbs {
+	margin-bottom: 2rem;
+}
+.wp-block-bne-container .bne-container-overlay {
+	transition: opacity .3s ease;
+}
+.wp-block-bne-container.bg-overlay-opactity:hover .bne-container-overlay {
+	opacity: 1 !important;
+}
+
+.wp-block-column > .wp-block-bne-container {
+	margin-top: 0;
+}
+
+.wp-block-bne-container.has-logo-overlay:after {
+	content: "";
+	position: absolute;
+	background-image: url('assets/images/logo-overlay.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 100%;
+	max-width: 30%;
+	height: 100%;
+	top: 0;
+	right: 0;
+}
+
+/* ===========================================================
+ *	Footer
+ * ======================================================== */
+
+#footer-widgets-wrapper {
+	background: #f8f8f8;
+	padding: 60px 30px 0 30px;
+}
+
+
+.footer-widgets ul.menu {
+	list-style: none;
+	padding: 0;
+}
+
+.footer-widgets ul.menu li {
+	line-height: 2;
+	text-transform: uppercase;
+}
+.footer-widgets ul.menu a {
+	color: #555 !important;
+}
+.footer-widgets ul.menu a:hover {
+	color: #000 !important;
+}
+
+.footer-widgets .widget-title {
+	position: relative;
+	margin-bottom: 25px;
+}
+
+.footer-widgets .widget-title:after {
+	content: "";
+	background: var(--theme-primary-color);
+	width: 100px;
+	height: 5px;
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+}
+
+.footer-widgets .table:last-of-type {
+	margin-bottom: 0
+}
+.footer-widgets .table td,
+.footer-widgets .table th {
+	border: none;
+}
+
+
+@media(max-width:768px) {
+    .footer-widgets {
+        text-align: center
+    }
+    .footer-widgets .widget-title:after {
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .table-hours tr td:first-of-type { text-align: right; }
+    .table-hours tr td:last-of-type { text-align: left; }
+}
+
+
+#footer_sub_content a {
+	color: var(--theme-tertiary-color) !important;
+	font-size: 16px;
+}
+#footer_sub_content,
+#footer_sub_content a:hover {
+	color: white !important;
+}
+
+/* ===========================================================
+ *	Blocks
+ * ======================================================== */
+ 
+/* == Block: Text Media == */
+@media (max-width: 600px) {
+	.wp-block-media-text.is-stacked-on-mobile {
+		/* Force Media side to always be first */
+		grid-template-areas: "media-text-media" "media-text-content" !important;
+	}
+	.wp-block-media-text .wp-block-media-text__content {
+		padding-top: 20px;
+	}
+}
+
+
+
+/* ===========================================================
+ *	Shortcodes
+ * ======================================================== */
+
+
+
+/* ===========================================================
+ *	Plugins
+ * ======================================================== */
+ 
+/* == Gravity Forms == */
+/*
+#wrapper .gform_wrapper .gform_footer {
+	margin-top: 0;
+}
+#wrapper .gform_wrapper .gform_footer input[type=submit] {
+	width: calc(100% - 16px);
+}
+*/

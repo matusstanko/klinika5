@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zrušenie rezervácie</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get("token");
+
+            if (!token) {
+                document.body.innerHTML = "<h2>Chyba: Chýba storno token!</h2>";
+                return;
+            }
+
+            try {
+                const response = await fetch("/api/cancel_reservation", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cancellation_token: token })
+                });
+
+                const result = await response.json();
+                document.body.innerHTML = `<h2>${result.message || "Chyba pri rušení rezervácie."}</h2>`;
+            } catch (error) {
+                document.body.innerHTML = "<h2>❌ Nepodarilo sa vykonať zrušenie.</h2>";
+            }
+        });
+    </script>
+</head>
+<body>
+    <h2>Spracovanie...</h2>
+</body>
+</html>

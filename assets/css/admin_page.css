@@ -1,0 +1,128 @@
+/* Globálne nastavenia */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Zachovanie rozloženia vľavo + vpravo */
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Obsah vľavo (Tabuľka + Formulár) */
+.content {
+    width: 50%; /* Tabuľka zostane naľavo */
+}
+
+/* Nadpisy */
+h1, h2 {
+    color: #222;
+}
+
+/* Tabuľka termínov */
+table {
+    width: 100%;
+    max-width: 600px; /* Maximálna šírka tabuľky */
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+tbody tr:hover {
+    background: #f1f1f1;
+}
+
+/* Formulár */
+form {
+    width: 100%;
+    max-width: 600px; /* Obmedzenie šírky formulára */
+    background: white;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+
+
+
+/* Log sekcia – Zväčšený log-container vpravo */
+.log-container {
+    min-width: 50%;
+    max-width: 50%; /* Obmedzená maximálna šírka */
+    border-left: 2px solid #ccc;
+    padding: 25px;
+    overflow-y: auto;
+    max-height: 90vh;
+    background: white;
+    box-shadow: -3px 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    margin-left: auto; /* POSUN LOGU DOPRAVA (NECENTRUJE SA) */
+}
+
+/* Log nadpis */
+.log-container h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Log zoznam */
+.log-list {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* Logy zarovnané naľavo */
+    font-size: 18px; /* Väčší text v logu */
+}
+
+.log-list li {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+    font-size: 18px; /* Zvýšenie veľkosti písma */
+}
+
+.log-list li:last-child {
+    border-bottom: none;
+}

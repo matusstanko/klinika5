@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="assets/css/admin_page.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+        .content {
+            width: 70%;
+        }
+        .log-container {
+            width: 25%;
+            border-left: 2px solid black;
+            padding-left: 20px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        .log-container h2 {
+            text-align: center;
+        }
+        .log-list {
+            list-style: none;
+            padding: 0;
+        }
+        .log-list li {
+            border-bottom: 1px solid gray;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Správa Termínov (time_slots)</h1>
+
+        <h2>Termíny</h2>
+        <table id="time_slots-table">
+            <thead>
+                <tr>
+                    <th>Dátum</th>
+                    <th>Čas</th>
+                    <th>Trvanie</th>
+                    <th>Obsadené</th>
+                    <th>Akcie</th> <!-- Nový stĺpec pre tlačidlo -->
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h2>Pridať nový termín</h2>
+        <form id="add-slot-form">
+            <label for="date">Dátum:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Čas:</label>
+            <input type="time" id="time" required>
+
+            <label for="duration">Trvanie (minúty):</label>
+            <input type="number" id="duration" required min="10" step="10">
+
+            <button type="submit">Pridať termín</button>
+        </form>
+    </div>
+
+    <!-- Loglist na pravej strane -->
+    <div class="log-container">
+        <h2>Log</h2>
+        <ul id="log-list" class="log-list"></ul>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

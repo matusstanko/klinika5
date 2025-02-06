@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Objednať sa</title>
+  <!-- Main CSS (includes your new grid styles) -->
+  <link rel="stylesheet" href="assets/css/objednat-sa.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Objednajte sa na prehliadku</h1>
+    <p>Vyberte si termín, ktorý vám vyhovuje</p>
+  </header>
+
+  <!-- UNIQUE CONTAINER for reservation UI -->
+  <div id="reservation-section">
+
+    <div class="reservation-container">
+
+      <!-- LEFT: Timeslots -->
+      <div id="timeslots"></div>
+
+      <!-- RIGHT: Reservation Form -->
+      <div id="reservationForm">
+        <h2>Dokončenie rezervácie</h2>
+
+        <div class="form-group">
+          <label for="phone">Telefónne číslo:</label>
+          <div class="phone-input">
+            <select id="countryCode" onchange="updatePhoneInput()">
+              <option value="+421" data-length="9">🇸🇰 Slovakia (+421)</option>
+              <option value="+45" data-length="8">🇩🇰 Denmark (+45)</option>
+            </select>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Zadajte váš telefón"
+              required
+            />
+          </div>
+        </div>
+        <script>
+          function updatePhoneInput() {
+            const countrySelect = document.getElementById("countryCode");
+            const phoneInput = document.getElementById("phone");
+        
+            const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+            const phoneLength = selectedOption.getAttribute("data-length");
+        
+            phoneInput.setAttribute("pattern", `\\d{${phoneLength}}`);
+            phoneInput.setAttribute("placeholder", `Zadajte ${phoneLength}-miestne číslo`);
+          }
+        
+          document.addEventListener("DOMContentLoaded", updatePhoneInput);
+        </script>
+        <div class="form-group">
+          <label for="email">Váš email:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Zadajte váš email"
+            required
+          />
+        </div>
+
+        <button onclick="submitReservation()">Potvrdiť rezerváciu</button>
+      </div>
+
+    </div> 
+
+  </div>
+
+  <footer id="footer">
+    <p>&copy; 1. Dentálna Klinika. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+  </footer>
+
+  <!-- JS for fetching slots & handling reservations -->
+  <script src="objednat-sa.js"></script>
+</body>
+</html>
