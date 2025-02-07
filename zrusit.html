@@ -15,7 +15,7 @@
             }
 
             try {
-                const response = await fetch("klinika-web-app-g4h0frhtbzgdd6d4.germanywestcentral-01.azurewebsites.net/api/cancel_reservation", {
+                const response = await fetch("https://klinika-web-app-g4h0frhtbzgdd6d4.germanywestcentral-01.azurewebsites.net/api/cancel_reservation", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ cancellation_token: token })
