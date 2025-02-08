@@ -34,8 +34,8 @@
           <label for="phone">Telefónne číslo:</label>
           <div class="phone-input">
             <select id="countryCode" onchange="updatePhoneInput()">
-              <option value="+421" data-length="9">🇸🇰 Slovakia (+421)</option>
-              <option value="+45" data-length="8">🇩🇰 Denmark (+45)</option>
+              <option value="+421" data-length="9">🇸🇰 +421</option>
+              <option value="+45" data-length="8">🇩🇰 +45</option>
             </select>
             <input
               type="tel"
@@ -54,7 +54,7 @@
             const phoneLength = selectedOption.getAttribute("data-length");
         
             phoneInput.setAttribute("pattern", `\\d{${phoneLength}}`);
-            phoneInput.setAttribute("placeholder", `Zadajte ${phoneLength}-miestne číslo`);
+            phoneInput.setAttribute("placeholder", `Zadajte vaše číslo`);
           }
         
           document.addEventListener("DOMContentLoaded", updatePhoneInput);
