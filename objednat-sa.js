@@ -16,7 +16,7 @@ function formatDate(dateString) {
 
 async function loadTimeslots() {
   try {
-      const response = await fetch("https://klinika-web-app-g4h0frhtbzgdd6d4.germanywestcentral-01.azurewebsites.net/api/get_all_timeslots");
+      const response = await fetch("https://klinika10-backend-cfgbfma3h5g4cbcb.germanywestcentral-01.azurewebsites.net/api/get_all_timeslots");
       let timeslots = await response.json();
 
       // 1️⃣ Sort slots by date (ascending)
@@ -191,7 +191,7 @@ async function submitReservation() {
     console.log("📤 Sending reservation data:", reservationData);
 
     try {
-        const response = await fetch("https://klinika-web-app-g4h0frhtbzgdd6d4.germanywestcentral-01.azurewebsites.net/api/create_reservation", {
+        const response = await fetch("https://klinika10-backend-cfgbfma3h5g4cbcb.germanywestcentral-01.azurewebsites.net/api/create_reservation", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reservationData)
