@@ -2,6 +2,35 @@
 document.addEventListener("DOMContentLoaded", loadTimeslots);
 
 
+// Random SVG
+
+document.addEventListener("DOMContentLoaded", function () {
+    const numSymbols = 5; // Number of symbols you want
+    const symbols = ["/images/zub1.svg", "/images/zub2.svg"]; // Your SVGs
+    const backgroundLayer = document.createElement("div");
+    backgroundLayer.id = "background-layer";
+    document.body.prepend(backgroundLayer); // Ensure it's behind everything
+
+    for (let i = 0; i < numSymbols; i++) {
+        const img = document.createElement("img");
+        img.src = symbols[Math.floor(Math.random() * symbols.length)];
+        img.classList.add("random-symbol");
+
+        // Random position but avoid placing them at the top/bottom of sections
+        const margin = 100; // Prevent full overlap with sections
+        img.style.left = `${margin + Math.random() * (window.innerWidth - 2 * margin)}px`;
+        img.style.top = `${margin + Math.random() * (window.innerHeight - 2 * margin)}px`;
+
+        // Random rotation
+        img.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        // Random size
+        const size = 50 + Math.random() * 100; // Between 50px and 150px
+        img.style.width = `${size}px`;
+
+        backgroundLayer.appendChild(img);
+    }
+});
 
 
 
