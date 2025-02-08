@@ -87,7 +87,29 @@ async function loadTimeslots() {
   }
 }
 
+//SCROLL NA FORM
+let hasScrolled = false; // Prevent multiple forced scrolls
 
+function scrollToForm() {
+    if (hasScrolled) return; // Don't force scroll again
+
+    const form = document.getElementById("reservationForm");
+    if (!form) return;
+
+    // ✅ Scroll to the form smoothly
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // ✅ Allow user to scroll freely after first scroll
+    hasScrolled = true;
+
+    // ✅ Reset scrolling permission when user scrolls manually
+    window.addEventListener("scroll", resetScroll);
+}
+
+function resetScroll() {
+    hasScrolled = false; // Enable scrolling again if the user interacts
+    window.removeEventListener("scroll", resetScroll); // Stop listening until next auto-scroll
+}
 
 
 
@@ -115,29 +137,34 @@ function toggleTimeslotVisibility(date) {
 
 // Timeslot click: Toggle active. If we *deactivate*, hide the form
 function selectTimeslot(event) {
-  const clickedSlot = event.target;
+    const clickedSlot = event.target;
+    
+    // If the clicked slot is already active, deactivate it and hide the form
+    if (clickedSlot.classList.contains("active")) {
+        clickedSlot.classList.remove("active");
+        document.getElementById("reservationForm").style.display = "none";
+        return;
+    }
 
-  // If the clicked slot is *already* active, remove 'active' & hide form
-  if (clickedSlot.classList.contains("active")) {
-      clickedSlot.classList.remove("active");
-      document.getElementById("reservationForm").style.display = "none";
-      return; // Stop here, we have deactivated the slot
-  }
+    // Remove active class from all timeslots
+    document.querySelectorAll(".timeslot").forEach(slot => {
+        slot.classList.remove("active");
+    });
 
-  // Otherwise, remove .active from ALL timeslots and set the new one
-  document.querySelectorAll(".timeslot").forEach(slot => {
-      slot.classList.remove("active");
-  });
+    // Set the clicked slot as active
+    clickedSlot.classList.add("active");
 
-  // Activate the newly clicked slot
-  clickedSlot.classList.add("active");
+    // Get the form element
+    const form = document.getElementById("reservationForm");
+    
+    // ✅ First, make sure the form is displayed
+    form.style.display = "block";
 
-  // Debug: Show selected timeslot ID
-  const chosenId = clickedSlot.getAttribute("data-id");
-  console.log("Vybraný termín ID:", chosenId);
-
-  // Display reservation form
-  document.getElementById("reservationForm").style.display = "block";
+    // ✅ Second, wait for the browser to render it, then scroll
+    setTimeout(() => {
+        console.log("🔹 Scrolling to form..."); // Debugging log
+        form.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50); // A small delay to ensure the browser renders it first
 }
 
 
