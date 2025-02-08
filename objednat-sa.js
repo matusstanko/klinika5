@@ -90,8 +90,12 @@ async function loadTimeslots() {
 //SCROLL NA FORM
 let hasScrolled = false; // Prevent multiple forced scrolls
 
+function isMobile() {
+    return window.innerWidth <= 768; // Only scroll if screen is small
+}
+
 function scrollToForm() {
-    if (hasScrolled) return; // Don't force scroll again
+    if (hasScrolled || !isMobile()) return; // Don't scroll on large screens
 
     const form = document.getElementById("reservationForm");
     if (!form) return;
