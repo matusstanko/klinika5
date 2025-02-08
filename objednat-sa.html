@@ -20,12 +20,16 @@
     <div class="reservation-container">
 
       <!-- LEFT: Timeslots -->
-      <div id="timeslots"></div>
+      <div id="timeslots">
+        <div id="loadingTimeslots" class="loading-spinner" style="display: none;"></div>
+      </div>
+
 
       <!-- RIGHT: Reservation Form -->
       <div id="reservationForm">
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
         <h2>Dokončenie rezervácie</h2>
-
+        
         <div class="form-group">
           <label for="phone">Telefónne číslo:</label>
           <div class="phone-input">

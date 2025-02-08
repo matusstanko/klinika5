@@ -17,77 +17,75 @@ function formatDate(dateString) {
     return `${dayName} ${day}.${month}.${year}`;
   }
 
-async function loadTimeslots() {
-  try {
-      const response = await fetch("https://klinika10-backend-cfgbfma3h5g4cbcb.germanywestcentral-01.azurewebsites.net/api/get_all_timeslots");
-      let timeslots = await response.json();
+  async function loadTimeslots() {
+    const loadingSpinner = document.getElementById("loadingTimeslots");
+    const timeslotsDiv = document.getElementById("timeslots");
 
-      // 1️⃣ Sort slots by date (ascending)
-      timeslots.sort((a, b) => new Date(a.date) - new Date(b.date));
+    try {
+        loadingSpinner.style.display = "block"; // Show spinner
+        timeslotsDiv.innerHTML = ""; // Clear previous timeslots
 
-      const timeslotsDiv = document.getElementById("timeslots");
-      timeslotsDiv.innerHTML = ""; // Clear previous
+        const response = await fetch("https://klinika10-backend-cfgbfma3h5g4cbcb.germanywestcentral-01.azurewebsites.net/api/get_all_timeslots");
+        let timeslots = await response.json();
 
-      // 2️⃣ Group them by date
-      const groupedByDay = {};
-      timeslots.forEach(slot => {
-          if (!groupedByDay[slot.date]) {
-              groupedByDay[slot.date] = [];
-          }
-          groupedByDay[slot.date].push(slot);
-      });
+        // 1️⃣ Sort slots by date (ascending)
+        timeslots.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-      // 3️⃣ Get a sorted list of dates
-      const sortedDates = Object.keys(groupedByDay).sort(
-          (a, b) => new Date(a) - new Date(b)
-      );
+        // 2️⃣ Group them by date
+        const groupedByDay = {};
+        timeslots.forEach(slot => {
+            if (!groupedByDay[slot.date]) {
+                groupedByDay[slot.date] = [];
+            }
+            groupedByDay[slot.date].push(slot);
+        });
 
-      // 4️⃣ Build HTML for each date
-      sortedDates.forEach(date => {
-          // Day header
-          const dayRow = document.createElement("div");
-          dayRow.classList.add("day-row");
-          dayRow.textContent = formatDate(date); // Convert "YYYY-MM-DD" to "DD/MM/YYYY"
+        // 3️⃣ Get a sorted list of dates
+        const sortedDates = Object.keys(groupedByDay).sort(
+            (a, b) => new Date(a) - new Date(b)
+        );
 
-          // Toggle show/hide timeslots (accordion style)
-          dayRow.addEventListener("click", function () {
-              toggleTimeslotVisibility(date);
-          });
+        // 4️⃣ Build HTML for each date
+        sortedDates.forEach(date => {
+            const dayRow = document.createElement("div");
+            dayRow.classList.add("day-row");
+            dayRow.textContent = formatDate(date);
 
-          // Container for timeslots of that day
-          const timeslotContainer = document.createElement("div");
-          timeslotContainer.classList.add("timeslot-container");
-          timeslotContainer.id = `timeslot-${date}`;
+            dayRow.addEventListener("click", function () {
+                toggleTimeslotVisibility(date);
+            });
 
-          // Create each slot
-          groupedByDay[date].forEach(slot => {
-              const slotElement = document.createElement("div");
-              slotElement.classList.add("timeslot");
-              slotElement.textContent = slot.time.slice(0, 5);
-              slotElement.setAttribute("data-id", slot.id);
+            const timeslotContainer = document.createElement("div");
+            timeslotContainer.classList.add("timeslot-container");
+            timeslotContainer.id = `timeslot-${date}`;
 
-              // If occupied, color it red, but don't move it
-              if (slot.is_taken) {
-                  slotElement.classList.add("occupied");
-                  slotElement.textContent += " (Obsadené)";
-              } else {
-                  // If free, allow click to select
-                  slotElement.addEventListener("click", function (event) {
-                      selectTimeslot(event);
-                  });
-              }
+            groupedByDay[date].forEach(slot => {
+                const slotElement = document.createElement("div");
+                slotElement.classList.add("timeslot");
+                slotElement.textContent = slot.time.slice(0, 5);
+                slotElement.setAttribute("data-id", slot.id);
 
-              timeslotContainer.appendChild(slotElement);
-          });
+                if (slot.is_taken) {
+                    slotElement.classList.add("occupied");
+                    slotElement.textContent += " (Obsadené)";
+                } else {
+                    slotElement.addEventListener("click", function (event) {
+                        selectTimeslot(event);
+                    });
+                }
 
-          // Append day + slots to page
-          timeslotsDiv.appendChild(dayRow);
-          timeslotsDiv.appendChild(timeslotContainer);
-      });
+                timeslotContainer.appendChild(slotElement);
+            });
 
-  } catch (error) {
-      console.error("Chyba pri načítaní termínov:", error);
-  }
+            timeslotsDiv.appendChild(dayRow);
+            timeslotsDiv.appendChild(timeslotContainer);
+        });
+
+    } catch (error) {
+        console.error("Chyba pri načítaní termínov:", error);
+    } finally {
+        loadingSpinner.style.display = "none"; // Hide spinner after loading
+    }
 }
 
 //SCROLL NA FORM
@@ -182,33 +180,27 @@ function selectTimeslot(event) {
 
 // Odoslat rezervaciu 
 async function submitReservation() {
-    const countryCode = document.getElementById("countryCode").value; 
+    const countryCode = document.getElementById("countryCode").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
-    const selectedSlot = document.querySelector(".timeslot.active"); 
+    const selectedSlot = document.querySelector(".timeslot.active");
     const fullPhoneNumber = `${countryCode}${phone}`;
-    
-    console.log("📌 Debug: Phone:", fullPhoneNumber, "Email:", email, "Selected slot:", selectedSlot);
-
-        // Validate phone number (only digits allowed)
-        if (!phone.match(/^\d+$/)) {
-            alert("Zadajte platné telefónne číslo bez medzier a znakov.");
-            return;
-        }
 
     if (!selectedSlot) {
         alert("Prosím, vyberte termín.");
         return;
     }
 
+    if (!phone.match(/^\d+$/)) {
+        alert("Zadajte platné telefónne číslo bez medzier a znakov.");
+        return;
+    }
 
-    // Kontrola emailu
     if (!email.match(/^\S+@\S+\.\S+$/)) {
         alert("Zadajte platný e-mail.");
         return;
     }
 
-    // Získame ID termínu z data-id
     const timeslotId = selectedSlot.getAttribute("data-id");
     if (!timeslotId) {
         alert("Chyba: Nemôžem získať ID termínu.");
@@ -219,10 +211,13 @@ async function submitReservation() {
     const reservationData = {
         phone: fullPhoneNumber,
         email: email,
-        timeslot_id: parseInt(timeslotId) // Zreťazíme na číslo
+        timeslot_id: parseInt(timeslotId)
     };
 
     console.log("📤 Sending reservation data:", reservationData);
+
+    const loadingSpinner = document.getElementById("loadingSpinner");
+    loadingSpinner.style.display = "block"; // Show loading spinner
 
     try {
         const response = await fetch("https://klinika10-backend-cfgbfma3h5g4cbcb.germanywestcentral-01.azurewebsites.net/api/create_reservation", {
@@ -243,6 +238,8 @@ async function submitReservation() {
     } catch (error) {
         console.error("❌ Chyba pri rezervácii:", error);
         alert("Chyba na strane servera.");
+    } finally {
+        loadingSpinner.style.display = "none"; // Hide spinner after request finishes
     }
 }
 
