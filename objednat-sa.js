@@ -7,12 +7,16 @@ document.addEventListener("DOMContentLoaded", loadTimeslots);
 
 // Utility function to format "YYYY-MM-DD" into "DD/MM/YYYY"
 function formatDate(dateString) {
-  const d = new Date(dateString);
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const year = d.getFullYear();
-  return `${day}/${month}/${year}`;
-}
+    const d = new Date(dateString);
+    const day = String(d.getDate()).padStart(1, "0"); // Odstránime vedúcu nulu
+    const month = String(d.getMonth() + 1).padStart(1, "0"); // Odstránime vedúcu nulu
+    const year = d.getFullYear();
+    
+    const daysOfWeek = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok", "Sobota"];
+    const dayName = daysOfWeek[d.getDay()]; // Získa deň v týždni
+    console.log(`${dayName} ${day}/${month}/${year}`);
+    return `${dayName} ${day}/${month}/${year}`;
+  }
 
 async function loadTimeslots() {
   try {
@@ -60,7 +64,7 @@ async function loadTimeslots() {
           groupedByDay[date].forEach(slot => {
               const slotElement = document.createElement("div");
               slotElement.classList.add("timeslot");
-              slotElement.textContent = slot.time; // e.g., "09:00"
+              slotElement.textContent = slot.time.slice(0, 5);
               slotElement.setAttribute("data-id", slot.id);
 
               // If occupied, color it red, but don't move it
