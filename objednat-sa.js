@@ -14,8 +14,7 @@ function formatDate(dateString) {
     
     const daysOfWeek = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok", "Sobota"];
     const dayName = daysOfWeek[d.getDay()]; // Získa deň v týždni
-    console.log(`${dayName} ${day}/${month}/${year}`);
-    return `${dayName} ${day}/${month}/${year}`;
+    return `${dayName} ${day}.${month}.${year}`;
   }
 
 async function loadTimeslots() {
