@@ -5432,23 +5432,22 @@ body {
   
   /* Responsive Design */
   @media (max-width: 768px) {
-	#rezervacia.wrapper.style2 .reservation-container {
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 1rem;
-	}
-  
-	#rezervacia.wrapper.style2 #timeslots, 
-	#rezervacia.wrapper.style2 #reservationForm {
-	  width: 90%;
-	  min-width: unset;
-	}
-  
-	#rezervacia.wrapper.style2 button {
-	  font-size: 1rem;
-	}
-  }
-  
+    #rezervacia.wrapper.style2 .reservation-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #rezervacia.wrapper.style2 #timeslots, 
+    #rezervacia.wrapper.style2 #reservationForm {
+        width: 100% !important;
+        min-width: unset;
+    }
+
+    #rezervacia.wrapper.style2 button {
+        font-size: 1rem;
+    }
+}
   /* Animations */
   #rezervacia.wrapper.style2 body {
 	animation: fadeIn 1s ease-in-out;
