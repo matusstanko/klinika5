@@ -5457,3 +5457,28 @@ body {
 }
 
 /* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    #rezervacia .reservation-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    /* Make timeslots full width on mobile */
+    #rezervacia #timeslots {
+        width: 100% !important;
+        min-width: unset;
+    }
+
+    /* Center timeslot text */
+    #rezervacia .timeslot {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    /* Make the reservation form also full width */
+    #rezervacia #reservationForm {
+        width: 100% !important;
+        min-width: unset;
+    }
+}
