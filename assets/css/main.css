@@ -5440,8 +5440,9 @@ body {
 
     #rezervacia.wrapper.style2 #timeslots, 
     #rezervacia.wrapper.style2 #reservationForm {
+		min-width: none !important;
+		max-width: none !important;
         width: 100% !important;
-        min-width: unset;
     }
 
     #rezervacia.wrapper.style2 button {
