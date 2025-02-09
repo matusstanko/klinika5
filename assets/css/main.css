@@ -5256,305 +5256,210 @@ body {
 
 
 
-  /*   OBJEDNAJTE SA */
-/* Reservation Section */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* RESERVATION SECTION */
 #rezervacia {
-    padding: 4rem 0;
+	margin-top: 2rem;
+    padding: 6rem 0 4rem 0;  /* Added top padding to prevent collision with navbar */
     text-align: center;
 }
 
+/* INNER CONTAINER */
 #rezervacia .inner {
     max-width: 1000px;
     margin: 0 auto;
     padding: 2rem;
-	color: rgb(87, 86, 86);
 }
 
-/* Main Content Layout */
+/* FLEXBOX LAYOUT */
 #rezervacia .reservation-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
     gap: 2rem;
 }
 
-/* Timeslots (Left Side) */
+/* LEFT COLUMN: TIMESLOTS */
 #rezervacia #timeslots {
     flex: 1;
     min-width: 45%;
     text-align: left;
 }
 
-/* Day Row Styling */
+/* DAY ROW */
 #rezervacia .day-row {
     padding: 1rem;
     margin-bottom: 0.8rem;
-    background-color: #ffffff; /* Warm yellow for contrast */
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s ease;
+    background: #f0faff; /* Light blue to blend with dental theme */
+    color: #004b8d; /* Dark blue for readability */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     font-weight: 600;
-
     cursor: pointer;
+    transition: transform 0.2s, background 0.3s ease;
 }
 
 #rezervacia .day-row:hover {
-    background-color: #e8e9bb;
+    background: #d9f0ff; /* Slightly lighter blue on hover */
+    transform: scale(1.02);
 }
 
-/* Timeslot Styling */
+/* TIMESLOT CONTAINER */
 #rezervacia .timeslot-container {
     display: none;
     padding-left: 1rem;
 }
 
+/* TIMESLOT STYLING */
 #rezervacia .timeslot {
-	background-color: rgb(225, 225, 225) !important;
+    background: #ffffff; /* White to contrast with blue theme */
+    color: #004b8d; /* Dark blue for readability */
     padding: 0.7rem;
     margin: 0.4rem 0;
-    border: 1px solid #ddd;
+    border: 1px solid #b0d5ff;
     border-radius: 6px;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s;
+    cursor: pointer;
 }
 
 #rezervacia .timeslot:hover {
-    background-color: #f9f9f9;
+    background: #eef7ff; /* Light hover effect */
+    transform: translateY(-2px);
 }
 
-/* Occupied Timeslot */
+/* OCCUPIED TIMESLOT */
 #rezervacia .occupied {
-
-    background-color: #ffb3b3 !important;
+    background: #ffb3b3;
     color: #721c24;
-    border-color: #ffb3b3;
+    border: none;
     pointer-events: none;
 }
 
-/* Active Timeslot */
+/* ACTIVE TIMESLOT */
 #rezervacia .active {
-    background-color: #b0e4a3 !important;
-    border-color: #ffbb00;
+    background: #a8e6cf !important;
+    border: none;
     color: #5b3c00;
     font-weight: 600;
 }
 
-/* Reservation Form (Right Side) */
+/* RIGHT COLUMN: RESERVATION FORM */
 #rezervacia #reservationForm {
     flex: 1;
     min-width: 40%;
-    background-color: #fff;
-    padding: 1.8rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9); /* Light transparency */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     display: none;
 }
 
+/* FORM TITLE */
 #rezervacia #reservationForm h2 {
     margin-top: 0;
     margin-bottom: 1.2rem;
-    color: #2ca8bf;
+    color: #004b8d;
+    font-weight: bold;
 }
 
-/* Phone Input */
+/* PHONE INPUT */
 #rezervacia .phone-input {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 #rezervacia .phone-input select {
-    width: 80px;  /* Adjusts the width of the country code dropdown */
-    padding: 5px;
+    width: 90px;
+    padding: 8px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #b0d5ff;
+    background: #ffffff;
+    color: #004b8d;
     text-align: center;
 }
 
 #rezervacia .phone-input input {
-    flex: 1; /* Takes the remaining space */
-    padding: 8px;
+    flex: 1;
+    padding: 10px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 6px;
+    border: 1px solid #b0d5ff;
+    background: #ffffff;
+    color: #004b8d;
     width: 100%;
 }
 
-/* Form Fields */
+/* FORM INPUTS */
 #rezervacia .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 #rezervacia label {
     display: block;
     font-weight: 600;
-    margin-bottom: 0.3rem;
-    color: #333;
+    margin-bottom: 0.4rem;
+    color: #004b8d;
 }
 
 #rezervacia input {
     width: 100%;
     padding: 0.8rem;
-    box-sizing: border-box;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    border: 1px solid #b0d5ff;
+    background: #ffffff;
+    color: #004b8d;
     font-size: 1rem;
 }
 
-/* Button Styling */
+/* BUTTONS */
 #rezervacia button {
     width: 100%;
-    padding: 0.9rem;
+    padding: 1rem;
     border: none;
-    background-color: #2ca8bf;
-    color: #fff;
+    background: linear-gradient(135deg, #0077cc, #005fa3);
+    color: #ffffff;
     cursor: pointer;
     font-size: 1.1rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s;
     font-weight: 600;
-    
-    /* Ensures text is vertically centered */
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    line-height: normal; /* Ensures proper vertical centering */
 }
 
 #rezervacia button:hover {
-    background-color: #2497ac;
+    background: linear-gradient(135deg, #005fa3, #004b8d);
+    transform: scale(1.03);
 }
 
-/* Responsive Design */
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     #rezervacia .reservation-container {
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        gap: 1.5rem;
     }
-
-    #rezervacia #timeslots, 
-    #rezervacia #reservationForm {
-        width: 100% !important;
-        min-width: unset;
-    }
-
-    /* Stack phone input fields */
-    #rezervacia .phone-input {
-        display: flex;
-        flex-direction: column;  /* STACKS the dropdown and input */
-        width: 100% !important;
-        gap: 8px;
-    }
-
-    /* Country Code Dropdown */
-    #rezervacia .phone-input select {
-        width: 100% !important;  /* Full width */
-        padding: 10px !important;
-        font-size: 16px !important;
-        text-align: center;
-    }
-
-    /* Phone Number Input */
-    #rezervacia .phone-input input {
-        width: 100% !important;  /* Full width */
-        padding: 12px !important;
-        font-size: 18px !important;
-    }
-
-    /* Email Field */
-    #rezervacia #email {
-        width: 100% !important;
-        padding: 12px !important;
-        font-size: 18px !important;
-    }
-
-    /* Submit Button */
-    #rezervacia button {
-        font-size: 1.1rem;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 14px !important;
-        margin-top: 10px;
-    }
-}
-
-/* Animations */
-#rezervacia body {
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-#rezervacia button:hover {
-    animation: bounce 0.3s ease-in-out;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-#rezervacia .active {
-    animation: expand 0.3s ease-in-out;
-}
-
-@keyframes expand {
-    from {
-        transform: scale(0.95);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-#rezervacia .timeslot-container {
-    display: none;
-    animation: slideDown 0.5s ease-in-out;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Loading Spinner */
-#rezervacia .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 5px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #ecf5ff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-    display: block;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
