@@ -5430,8 +5430,11 @@ body {
 	background-color: #2497ac;
   }
   
+
+
+  /* Telefon design */
   /* Responsive Design */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     #rezervacia.wrapper.style2 .reservation-container {
         flex-direction: column;
         align-items: center;
@@ -5444,33 +5447,43 @@ body {
         max-width: 100% !important;
     }
 
+    /* Stack phone input fields */
     #rezervacia.wrapper.style2 .phone-input {
         display: flex;
+        flex-direction: column;  /* STACKS the dropdown and input */
         width: 100% !important;
-        align-items: center;
-        gap: 5px;
+        gap: 8px;
     }
 
+    /* Country Code Dropdown */
     #rezervacia.wrapper.style2 .phone-input select {
-        width: 75px !important;  /* Adjusts country code width */
+        width: 100% !important;  /* Full width */
         padding: 10px !important;
         font-size: 16px !important;
         text-align: center;
     }
 
+    /* Phone Number Input */
     #rezervacia.wrapper.style2 .phone-input input {
-        flex: 1 !important;
-        width: calc(100% - 80px) !important; /* Takes remaining space after the dropdown */
-        min-width: auto !important;
+        width: 100% !important;  /* Full width */
         padding: 12px !important;
         font-size: 18px !important;
     }
 
+    /* Email Field */
+    #rezervacia.wrapper.style2 #email {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 18px !important;
+    }
+
+    /* Submit Button */
     #rezervacia.wrapper.style2 button {
-        font-size: 1rem;
+        font-size: 1.1rem;
         width: 100% !important;
         text-align: center !important;
-        padding: 12px !important;
+        padding: 14px !important;
+        margin-top: 10px;
     }
 }
 
