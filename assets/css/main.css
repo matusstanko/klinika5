@@ -5457,9 +5457,3 @@ body {
 }
 
 /* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    #rezervacia .reservation-container {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-}
