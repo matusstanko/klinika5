@@ -5440,15 +5440,41 @@ body {
 
     #rezervacia.wrapper.style2 #timeslots, 
     #rezervacia.wrapper.style2 #reservationForm {
-		min-width: none !important;
-		max-width: none !important;
         width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #rezervacia.wrapper.style2 .phone-input {
+        display: flex;
+        width: 100% !important;
+        align-items: center;
+        gap: 5px;
+    }
+
+    #rezervacia.wrapper.style2 .phone-input select {
+        width: 75px !important;  /* Adjusts country code width */
+        padding: 10px !important;
+        font-size: 16px !important;
+        text-align: center;
+    }
+
+    #rezervacia.wrapper.style2 .phone-input input {
+        flex: 1 !important;
+        width: calc(100% - 80px) !important; /* Takes remaining space after the dropdown */
+        min-width: auto !important;
+        padding: 12px !important;
+        font-size: 18px !important;
     }
 
     #rezervacia.wrapper.style2 button {
         font-size: 1rem;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px !important;
     }
 }
+
+
   /* Animations */
   #rezervacia.wrapper.style2 body {
 	animation: fadeIn 1s ease-in-out;
