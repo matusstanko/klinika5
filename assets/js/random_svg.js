@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define positions, sizes, and rotations (balanced, modern, staggered)
     const teethConfig = [
         // Left side (0% - 5%)
-        { left: "2%", top: "5%", size: "5%", rotation: -10 },
+        { left: "15%", top: "2%", size: "10%", rotation: -10 },
         { left: "4%", top: "13%", size: "6%", rotation: 8 },
         { left: "1%", top: "22%", size: "4.5%", rotation: -5 },
         { left: "3%", top: "33%", size: "7%", rotation: 12 },
@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { left: "2%", top: "77%", size: "4.8%", rotation: 10 },
         // Right side (95% - 100%) (Staggered differently)
         { left: "90%", top: "8%", size: "5%", rotation: 10 },
-        { left: "88%", top: "18%", size: "6%", rotation: -8 },
+        { left: "88%", top: "18%", size: "12%", rotation: -8 },
         { left: "92%", top: "27%", size: "4.5%", rotation: 5 },
         { left: "93%", top: "37%", size: "7%", rotation: -12 },
         { left: "88%", top: "50%", size: "6%", rotation: 8 },
         { left: "90%", top: "58%", size: "5.5%", rotation: -5 },
         { left: "80%", top: "69%", size: "6.5%", rotation: 12 },
-        { left: "95%", top: "80%", size: "4.8%", rotation: -10 }
+        { left: "90%", top: "80%", size: "12%", rotation: -10 }
     ];
     const backgroundLayer = document.createElement("div");
     backgroundLayer.id = "background-layer";
